@@ -33,7 +33,10 @@ environment() {
 
 proton() {
   (echo "import sys; __file__ = sys.argv[0] = \"$PROTON\""
-   sed 's/, "steam"//g' < "$PROTON") | PYTHONPATH="$(dirname "$PROTON")" python3 - "$@"
+   sed 's/, "steam"//g; /"waitforexitandrun"/i \
+    elif sys.argv[1] == "tricks": \
+        g_session.run_proc(["winetricks"] + sys.argv[2:]) \
+' < "$PROTON") | PYTHONPATH="$(dirname "$PROTON")" python3 - "$@"
 }
 
 run() {
@@ -155,6 +158,13 @@ case "$1" in
     shift
     environment
     proton run "$@"
+    exit
+    ;;
+  tricks)
+    echo "running winetricks $*"
+    shift
+    environment
+    proton tricks "$@"
     exit
     ;;
 esac
