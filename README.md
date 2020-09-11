@@ -35,12 +35,15 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 # games tested
 `installs` means that it installs and appears to run but was not extensively tested in-game.
 
+`use borderless` means that it's recommended to go into the graphics options and set the game
+to "borderless window" instead of fullscreen, which will make tabbing out of the game faster
+
 * Iron Harvest: installs
 * Crusader Kings 3: installs
 * Age of Empires II - Definitive Edition: installs, requires `protonfit tricks vcrun2015` after
   install to run
-* Gaia Beyond: installs, setting it to borderless instead of fullscreen is recommended so tabbing
-  out of the game is faster
+* Gaia Beyond: installs, use borderless
+* Paradise Killer: installs, use borderless
 
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
