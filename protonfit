@@ -29,6 +29,7 @@ environment() {
   export SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD="1"
   export SDL_GAMECONTROLLER_USE_BUTTON_LABELS="1"
   export SDL_VIDEO_X11_DGAMOUSE="0"
+  export vblank_mode=0
   [ ! -f "$PROTON" ] &&
     need_export proton PROTON /usr/share/steam/compatibilitytools.d/proton-ge-custom/proton
   [ ! -d "$STEAM_HOME_DIR" ] &&
