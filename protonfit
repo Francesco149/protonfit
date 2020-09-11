@@ -149,11 +149,22 @@ EOF
   "${EDITOR:-cat}" protonfit-README
 }
 
+case "$1" in
+  run)
+    echo "running custom command: $*"
+    shift
+    environment
+    proton run "$@"
+    exit
+    ;;
+esac
+
 # if protonfit is symlinked inside a game's dir, cd there
 exedir="$(dirname "$0")"
 if [ -f "$exedir/protonfit-settings" ]; then
   cd "$exedir" || exit
 fi
+
 if [ ! -f ./protonfit-settings ]; then
   install
 else
