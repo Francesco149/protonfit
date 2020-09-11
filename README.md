@@ -33,18 +33,38 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
   (change WINEDEBUG value to whatever you like). it will log to ~/.steam-0.log
 
 # games tested
-`installs` means that it installs and appears to run but was not extensively tested in-game.
-
-`use borderless` means that it's recommended to go into the graphics options and set the game
+* `wip` means that it doesn't work but work has been done to get it closer to running
+* `installs` means that it installs and appears to run but was not extensively tested in-game.
+* `use borderless` means that it's recommended to go into the graphics options and set the game
 to "borderless window" instead of fullscreen, which will make tabbing out of the game faster
 
-* Iron Harvest: installs
-* Crusader Kings 3: installs
-* Age of Empires II - Definitive Edition: installs, requires `protonfit tricks vcrun2015` after
-  install to run
-* Gaia Beyond: installs, use borderless
-* Paradise Killer: installs, use borderless. controller doesn't work even though it shows up in
-  control panel
+## Iron Harvest
+installs
+
+## Crusader Kings 3
+installs
+
+## Age of Empires II - Definitive Edition
+installs, requires `protonfit tricks vcrun2015` after install to run
+
+## Gaia Beyond
+installs, use borderless
+
+## Paradise Killer
+installs, use borderless. controller doesn't work even though it shows up in control panel
+
+## Puyo Puyo Tetris
+wp, manually kill the setup.exe process after it's done to make install continue
+
+CODEX's proper crack is needed, you can install it by running these commands (7z required)
+
+    cd pfx/drive_c/Games/Puyo\ Puyo\ Tetris/
+    7z x /path/to/PPT_CODEX_Proper_Crack.zip
+    # accept all overwrites
+    rm antidenuvo.dll Denuvo64.sys winmm.dll
+
+wine fails to properly initialize `codex64.dll` unfortunately, probably because it tries to
+camouflage itself as steamclient64, some research here: https://www.reddit.com/r/wine_gaming/comments/fg4ecu/some_research_regarding_later_denuvo_workarounds/?sort=top
 
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
