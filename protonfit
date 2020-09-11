@@ -69,7 +69,7 @@ install() {
 
     msg "installing patched cmd.exe so fitgirl setups don't hang"
     curl --location --progress-bar \
-      https://github.com/Francesco149/wine/releases/download/move-overwrite-fix-r1/cmd.exe.so \
+      https://github.com/Francesco149/wine/releases/download/move-overwrite-fix-r2/cmd.exe.so \
       > ./pfx/drive_c/windows/syswow64/cmd.exe || exit
     cp ./pfx/drive_c/windows/syswow64/cmd.exe ./pfx/drive_c/windows/system32
 
