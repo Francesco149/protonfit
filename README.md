@@ -79,6 +79,9 @@ as root.
 the solution I'm thinking is to extract/reverse engineer the python server it runs and just run
 Dungeons.exe instead
 
+## As Far as the Eye
+installs, use borderless.
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
