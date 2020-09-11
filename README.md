@@ -68,6 +68,14 @@ camouflage itself as steamclient64, some research here: https://www.reddit.com/r
 
 trace: https://gist.github.com/601e40a0c6773111c4c90780b4860c81
 
+## Minecraft Dungeons
+wip, setup completes but it needs to run a server that binds on port 443 which needs root. another
+issue is that it creates a temp directory with no read permissions which again is only accessible
+as root.
+
+the solution I'm thinking is to extract/reverse engineer the python server it runs and just run
+Dungeons.exe instead
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
