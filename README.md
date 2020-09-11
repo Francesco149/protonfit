@@ -43,7 +43,8 @@ to "borderless window" instead of fullscreen, which will make tabbing out of the
 * Age of Empires II - Definitive Edition: installs, requires `protonfit tricks vcrun2015` after
   install to run
 * Gaia Beyond: installs, use borderless
-* Paradise Killer: installs, use borderless
+* Paradise Killer: installs, use borderless. controller doesn't work even though it shows up in
+  control panel
 
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
