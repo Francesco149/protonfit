@@ -93,6 +93,10 @@ Dungeons.exe instead
 ### v1.0.0b
 installs, use borderless.
 
+## Tamarin #1565
+### Initial repack
+installs, set render resolution to 100% to fix weird letterboxing
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
