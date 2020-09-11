@@ -36,6 +36,8 @@ open a terminal, `cd` to the path where `setup.exe` is located and run `protonfi
 * Crusader Kings 3: installs
 * Age of Empires II - Definitive Edition: installs, requires `protonfit tricks vcrun2015` after
   install to run
+* Gaia Beyond: installs, setting it to borderless instead of fullscreen is recommended so tabbing
+  out of the game is faster
 
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
