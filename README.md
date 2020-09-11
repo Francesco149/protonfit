@@ -30,7 +30,7 @@ open a terminal, `cd` to the path where `setup.exe` is located and run `protonfi
   (change WINEDEBUG value to whatever you like). it will log to ~/.steam-0.log
 
 # games tested
-* `installs` means that it installs and appears to run but was not extensively tested in-game
+`installs` means that it installs and appears to run but was not extensively tested in-game.
 
 * Iron Harvest: installs
 * Crusader Kings 3: installs
