@@ -66,6 +66,8 @@ CODEX's proper crack is needed, you can install it by running these commands (7z
 wine fails to properly initialize `codex64.dll` unfortunately, probably because it tries to
 camouflage itself as steamclient64, some research here: https://www.reddit.com/r/wine_gaming/comments/fg4ecu/some_research_regarding_later_denuvo_workarounds/?sort=top
 
+trace: https://gist.github.com/601e40a0c6773111c4c90780b4860c81
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
