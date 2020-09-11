@@ -22,6 +22,9 @@ sudo mv ./protonfit /usr/local/bin/
 # usage
 open a terminal, `cd` to the path where `setup.exe` is located and run `protonfit`
 
+NOTE: it's recommended to NOT install directx updates and visual c++ runtime and stuff like that.
+      instead, use `tricks` later if needed.
+
 # advanced usage
 * `protonfit tricks` runs winetricks on the proton profile, for example
   `protonfit tricks vcrun2015`
