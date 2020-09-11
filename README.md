@@ -41,22 +41,28 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 * `use borderless` means that it's recommended to go into the graphics options and set the game
 to "borderless window" instead of fullscreen, which will make tabbing out of the game faster
 
-## Iron Harvest
+## Iron Harvest #1552
+### v1.0.0.1600 rev.37863 (Build 5487982)
 installs
 
-## Crusader Kings 3
+## Crusader Kings 3 #1553
+### v1.0.2 + 2 DLCs + Multiplayer
 installs
 
-## Age of Empires II - Definitive Edition
+## Age of Empires II - Definitive Edition #1276
+### Build 36906 + Enhanced Graphics Pack
 installs, requires `protonfit tricks vcrun2015` after install to run
 
-## Gaia Beyond
+## Gaia Beyond #1534
+### Hotfix
 installs, use borderless
 
-## Paradise Killer
+## Paradise Killer #1559
+### Initial repack
 installs, use borderless. controller doesn't work even though it shows up in control panel
 
-## Puyo Puyo Tetris
+## Puyo Puyo Tetris #928
+### Update 4
 wip, manually kill the setup.exe process after it's done to make install continue
 
 CODEX's proper crack is needed, you can install it by running these commands (7z required)
@@ -71,7 +77,8 @@ camouflage itself as steamclient64, some research here: https://www.reddit.com/r
 
 trace: https://gist.github.com/601e40a0c6773111c4c90780b4860c81
 
-## Minecraft Dungeons
+## Minecraft Dungeons #1463
+### v1.4.3.0_4640940 + 2 DLCs + Multiplayer
 wip, setup completes but it needs to run a server that binds on port 443 which needs root. another
 issue is that it creates a temp directory with no read permissions which again is only accessible
 as root.
@@ -79,7 +86,8 @@ as root.
 the solution I'm thinking is to extract/reverse engineer the python server it runs and just run
 Dungeons.exe instead
 
-## As Far as the Eye
+## As Far as the Eye #1564
+### v1.0.0b
 installs, use borderless.
 
 # credits
