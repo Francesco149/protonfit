@@ -4,6 +4,9 @@ script that runs the game with proton as well as a .desktop file for application
 NOTE: this has been tested with very few games and makes many assumptions. feel free to contribute
 patches for better compat
 
+UPDATE: some of the wine patches used by this script have been merged into wine as of 5.17, so
+if you prefer you can just manually use plain old wine now as long as you have 5.17
+
 # dependencies
 * icoutils (wrestool)
 * proton-ge-custom or other proton versions (specify by exporting $PROTON to the proton binary)
