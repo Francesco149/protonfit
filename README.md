@@ -10,11 +10,14 @@ if you prefer you can just manually use plain old wine now as long as you have 5
 # dependencies
 * icoutils (wrestool)
 * proton-ge-custom or other proton versions (specify by exporting $PROTON to the proton binary)
-* steam (export STEAM_HOME_DIR if it's not at ~/.steam): you must run and update it once. no need
-  to have an account or log in.
+* steam-native-runtime
 * dmenu or rofi
 * curl
-
+* if your distro doesn't provide a steam native runtime and you don't want to manually find
+  all the libraries, install steam and export STEAM_RUNTIME=1. you must run and update steam at
+  least once. no need to have an account or log in.
+  if your steam install isn't at ~/.steam , also export STEAM_HOME_DIR
+ 
 # install
 ```
 curl -lO https://raw.githubusercontent.com/Francesco149/protonfit/master/protonfit
@@ -59,7 +62,7 @@ installs, use borderless
 
 ## Paradise Killer #1559
 ### Initial repack
-installs, use borderless. controller doesn't work even though it shows up in control panel
+installs, use borderless
 
 ## Puyo Puyo Tetris #928
 ### Update 4
