@@ -54,7 +54,7 @@ installs, use borderless
 installs, use borderless. controller doesn't work even though it shows up in control panel
 
 ## Puyo Puyo Tetris
-wp, manually kill the setup.exe process after it's done to make install continue
+wip, manually kill the setup.exe process after it's done to make install continue
 
 CODEX's proper crack is needed, you can install it by running these commands (7z required)
 
