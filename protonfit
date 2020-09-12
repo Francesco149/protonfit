@@ -125,6 +125,7 @@ export DXVK_LOG_LEVEL="info"
 #export PROTON_NO_FSYNC="1"
 #export PROTON_FORCE_LARGE_ADDRESS_AWARE="1"
 #export PROTON_OLD_GL_STRING="1"
+export RADV_PERFTEST=aco # enable ACO compiler for less shader stutter on amd cards
 EOF
   chmod +x ./protonfit-settings
   . ./protonfit-settings
