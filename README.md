@@ -9,7 +9,10 @@ if you prefer you can just manually use plain old wine now as long as you have 5
 
 # dependencies
 * icoutils (wrestool)
-* proton-ge-custom or other proton versions (specify by exporting $PROTON to the proton binary)
+* proton-ge-custom or other proton versions (specify by exporting $PROTON to the proton binary).
+  `proton-ge-custom-bin` works fine for a lot of games, but it's recommended to compile
+  `proton-ge-custom` from aur instead of downloading binaries, as this will integrate much better
+  with your system libraries. see the part on compiling proton-ge-custom below.
 * steam-native-runtime
 * dmenu or rofi
 * curl
@@ -39,6 +42,9 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
   (change WINEDEBUG value to whatever you like). it will log to ~/.steam-0.log
 
 # if things go wrong
+* if the game doesn't run, try running with `STEAM_RUNTIME=1` first, as some system libraries might
+  be too new for proton binaries. this can also be solved by just compiling `proton-ge-custom`
+  from the aur instead of installing `proton-ge-custom-bin`
 * you can wipe your install by doing `rm protonfit-*` and `protonfit` again
 * if the install fails protonfit might create a bogus .desktop file that contains an asterisk in
   its name, you can remove it by doing `rm ~/.local/share/applications/protonfit-\**`
@@ -48,6 +54,12 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
   reinstalling the game, you can do `FITDBG_SKIP_SETUP=1 protonfit` assuming the game is already
   correctly installed
 
+# compiling proton-ge-custom from source
+* set up an arch aur helper. I use trizen.
+* install `python-defcon`, but edit the PKGBUILD when prompted and remove the `check()` part.
+* install `python-fontpens`, but edit the PKGBUILD when prompted and remove the checkdepends line
+* finally, install `proton-ge-custom`
+ 
 # games tested
 * `wip` means that it doesn't work but work has been done to get it closer to running
 * `installs` means that it installs and appears to run but was not extensively tested in-game.
