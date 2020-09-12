@@ -119,6 +119,10 @@ installs, use borderless.
 ### Initial repack
 installs, set render resolution to 100% to fix weird letterboxing
 
+## The Unfinished Swan #1563
+### Initial repack
+wip, needs `protonfit tricks d3dcompiler_47` . clicking Toys or Play crashes.
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
