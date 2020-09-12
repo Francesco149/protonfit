@@ -23,10 +23,10 @@ need_export() {
 environment() {
   export STEAM_RUNTIME="${STEAM_RUNTIME:-0}"
   if [ "$STEAM_RUNTIME" != "0" ]; then
-    [ ! -d "$STEAM_HOME_DIR" ] &&
-      need_export steam STEAM_HOME_DIR ~/.steam
     export STEAM_HOME_DIR="${STEAM_HOME_DIR:-$HOME/.steam}"
     export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/pinned_libs_32:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/pinned_libs_64:/usr/lib64/qt-3.3/lib:/usr/lib64/tcl8.6:/usr/lib/wine:/usr/lib64/wine:/lib:/lib64:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/lib/i386-linux-gnu:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/usr/lib/i386-linux-gnu:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/lib/x86_64-linux-gnu:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/usr/lib/x86_64-linux-gnu:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/lib:$STEAM_HOME_DIR/ubuntu12_32/steam-runtime/usr/lib:"
+    [ ! -d "$STEAM_HOME_DIR" ] &&
+      need_export steam STEAM_HOME_DIR ~/.steam
   fi
   export PROTON="${PROTON:-/usr/share/steam/compatibilitytools.d/proton-ge-custom/proton}"
   export STEAM_COMPAT_DATA_PATH="$PWD"
