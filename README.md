@@ -10,9 +10,9 @@ if you prefer you can just manually use plain old wine now as long as you have 5
 # dependencies
 * icoutils (wrestool)
 * proton-ge-custom or other proton versions (specify by exporting $PROTON to the proton binary).
-  `proton-ge-custom-bin` works fine for a lot of games, but it's recommended to compile
-  `proton-ge-custom` from aur instead of downloading binaries, as this will integrate much better
-  with your system libraries. see the part on compiling proton-ge-custom below.
+  `proton-ge-custom-bin` works fine for a lot of games.
+  you can also try `proton-ge-custom` from aur instead of downloading binaries.
+  see the part on compiling proton-ge-custom below.
 * steam-native-runtime
 * dmenu or rofi
 * curl
