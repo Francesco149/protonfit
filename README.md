@@ -46,8 +46,6 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
   be too new for proton binaries. this can also be solved by just compiling `proton-ge-custom`
   from the aur instead of installing `proton-ge-custom-bin`
 * you can wipe your install by doing `rm protonfit-*` and `protonfit` again
-* if the install fails protonfit might create a bogus .desktop file that contains an asterisk in
-  its name, you can remove it by doing `rm ~/.local/share/applications/protonfit-\**`
 * some setups will use absurd amounts of ram. if your pc freezes during install it's possible that
   you ran out of ram, try again and tick the ram limiting option
 * if you want to regenerate the config and shortcuts and get the .exe picker menu again without
