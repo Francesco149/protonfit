@@ -73,6 +73,7 @@ install() {
       esac
       msg "wiping prefix"
       rm -rf ./pfx || exit
+      rm version tracked_files
     fi
 
     msg "initializing prefix"
