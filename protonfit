@@ -76,14 +76,9 @@ install() {
       rm version tracked_files
     fi
 
-    msg "initializing prefix"
     environment
-    proton run wineboot || exit
-    proton run wineserver -w
-
-    msg "checking for wine cmd bugs"
-    proton run cmd /c 'cd "."&&"cmd.exe" /c "echo hello">C:\test0'
-    proton run cmd /c 'echo test1>C:\test1 && echo test2>C:\test2 && echo n | move C:\test1 C:\test2'
+    msg "initializing prefix and checking for wine cmd bugs"
+    proton run cmd /c 'cd "."&&"cmd.exe" /c "echo hello">C:\test0 && echo test1>C:\test1 && echo test2>C:\test2 && echo n | move C:\test1 C:\test2'
     proton run wineserver -w
     echo
     if [ "$(cat pfx/drive_c/test0)" != "test0" ] ||
@@ -94,7 +89,6 @@ install() {
         https://github.com/Francesco149/wine/releases/download/move-overwrite-fix-r2/cmd.exe.so \
         > ./pfx/drive_c/windows/syswow64/cmd.exe || exit
       cp ./pfx/drive_c/windows/syswow64/cmd.exe ./pfx/drive_c/windows/system32
-      proton run wineserver -k
     else
       msg "your wine is up to date! great, no need for the cmd patches then"
     fi
