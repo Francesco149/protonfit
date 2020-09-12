@@ -13,7 +13,8 @@ these are based on arch linux derivatives but you can adapt to other distros
 * proton-tkg-git from the chaotic aur https://lonewolf.pedrohlc.com/chaotic-aur/
 * a tkg-pds kernel matching your cpu architecture from that same aur will help performance a lot
   thanks to fsync support and other goodies (also in the chaotic aur)
-* on amd, you also want mesa-tkg-git (also in the chaotic aur) to fix shader stutters
+* on amd, you also want mesa-tkg-git and lib32-mesa-tkg-git (also in the chaotic aur) to fix shader
+  stutters
 * steam-native-runtime
 * dmenu or rofi
 * curl
