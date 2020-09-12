@@ -38,7 +38,9 @@ environment() {
   export SDL_VIDEO_X11_DGAMOUSE="0"
   export vblank_mode=0
   [ ! -f "$PROTON" ] &&
-    need_export proton PROTON "$DEFAULT_PROTON"
+    need_export proton PROTON "$DEFAULT_PROTON" && echo "
+you can install proton-tkg-git from the chaotic aur: https://lonewolf.pedrohlc.com/
+"
 }
 
 proton() {
