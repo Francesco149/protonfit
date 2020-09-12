@@ -8,11 +8,12 @@ UPDATE: some of the wine patches used by this script have been merged into wine 
 if you prefer you can just manually use plain old wine now as long as you have 5.17
 
 # dependencies
+these are based on arch linux derivatives but you can adapt to other distros
 * icoutils (wrestool)
-* proton-ge-custom or other proton versions (specify by exporting $PROTON to the proton binary).
-  `proton-ge-custom-bin` works fine for a lot of games.
-  you can also try `proton-ge-custom` from aur instead of downloading binaries.
-  see the part on compiling proton-ge-custom below.
+* proton-tkg-git from the chaotic aur https://lonewolf.pedrohlc.com/chaotic-aur/
+* a tkg-pds kernel matching your cpu architecture from that same aur will help performance a lot
+  thanks to fsync support and other goodies (also in the chaotic aur)
+* on amd, you also want mesa-aco-git (also in the chaotic aur) to fix shader stutters
 * steam-native-runtime
 * dmenu or rofi
 * curl
@@ -43,20 +44,13 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 
 # if things go wrong
 * if the game doesn't run, try running with `STEAM_RUNTIME=1` first, as some system libraries might
-  be too new for proton binaries. this can also be solved by just compiling `proton-ge-custom`
-  from the aur instead of installing `proton-ge-custom-bin`
+  be too new for proton binaries
 * you can wipe your install by doing `rm protonfit-*` and `protonfit` again
 * some setups will use absurd amounts of ram. if your pc freezes during install it's possible that
   you ran out of ram, try again and tick the ram limiting option
 * if you want to regenerate the config and shortcuts and get the .exe picker menu again without
   reinstalling the game, you can do `FITDBG_SKIP_SETUP=1 protonfit` assuming the game is already
   correctly installed
-
-# compiling proton-ge-custom from source
-* set up an arch aur helper. I use trizen.
-* install `python-defcon`, but edit the PKGBUILD when prompted and remove the `check()` part.
-* install `python-fontpens`, but edit the PKGBUILD when prompted and remove the checkdepends line
-* finally, install `proton-ge-custom`
  
 # games tested
 * `wip` means that it doesn't work but work has been done to get it closer to running

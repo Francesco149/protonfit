@@ -1,5 +1,7 @@
 #!/bin/sh
 
+DEFAULT_PROTON="${DEFAULT_PROTON:-/usr/share/steam/compatibilitytools.d/proton_tkg_makepkg/proton}"
+
 headless() {
   if [ -t 0 ] && [ -t 1  ]; then
     return 1
@@ -28,7 +30,7 @@ environment() {
     [ ! -d "$STEAM_HOME_DIR" ] &&
       need_export steam STEAM_HOME_DIR ~/.steam
   fi
-  export PROTON="${PROTON:-/usr/share/steam/compatibilitytools.d/proton-ge-custom/proton}"
+  export PROTON="${PROTON:-$DEFAULT_PROTON}"
   export STEAM_COMPAT_DATA_PATH="$PWD"
   export SDL_GAMECONTROLLERCONFIG="03000000de280000ff11000001000000,Steam Virtual Gamepad,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,03000000de280000fc11000001000000,Steam Controller,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,030000005e040000a102000007010000,X360 Wireless Controller,a:b0,b:b1,back:b6,dpdown:b14,dpleft:b11,dpright:b12,dpup:b13,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,0000000058626f782047616d65706100,XInput Controller,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,030000005e0400008e02000010010000,X360 Controller,a:b0,b:b1,back:b6,dpdown:h0.4,dpleft:h0.8,dpright:h0.2,dpup:h0.1,guide:b8,leftshoulder:b4,leftstick:b9,lefttrigger:a2,leftx:a0,lefty:a1,rightshoulder:b5,rightstick:b10,righttrigger:a5,rightx:a3,righty:a4,start:b7,x:b2,y:b3,"
   export SDL_GAMECONTROLLER_ALLOW_STEAM_VIRTUAL_GAMEPAD="1"
@@ -36,7 +38,7 @@ environment() {
   export SDL_VIDEO_X11_DGAMOUSE="0"
   export vblank_mode=0
   [ ! -f "$PROTON" ] &&
-    need_export proton PROTON /usr/share/steam/compatibilitytools.d/proton-ge-custom/proton
+    need_export proton PROTON "$DEFAULT_PROTON"
 }
 
 proton() {
