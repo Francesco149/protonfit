@@ -38,6 +38,16 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 * to debug wine, you can run `PROTON_LOG=1 WINEDEBUG=+cmd SteamGameId=0 protonfit`
   (change WINEDEBUG value to whatever you like). it will log to ~/.steam-0.log
 
+# if things go wrong
+* you can wipe your install by doing `rm protonfit-*` and `protonfit` again
+* if the install fails protonfit might create a bogus .desktop file that contains an asterisk in
+  its name, you can remove it by doing `rm ~/.local/share/applications/protonfit-\**`
+* some setups will use absurd amounts of ram. if your pc freezes during install it's possible that
+  you ran out of ram, try again and tick the ram limiting option
+* if you want to regenerate the config and shortcuts and get the .exe picker menu again without
+  reinstalling the game, you can do `FITDBG_SKIP_SETUP=1 protonfit` assuming the game is already
+  correctly installed
+
 # games tested
 * `wip` means that it doesn't work but work has been done to get it closer to running
 * `installs` means that it installs and appears to run but was not extensively tested in-game.
