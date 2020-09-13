@@ -50,8 +50,7 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 * some setups will use absurd amounts of ram. if your pc freezes during install it's possible that
   you ran out of ram, try again and tick the ram limiting option
 * if you want to regenerate the config and shortcuts and get the .exe picker menu again without
-  reinstalling the game, you can do `FITDBG_SKIP_SETUP=1 protonfit` assuming the game is already
-  correctly installed
+  reinstalling the game, you can do `protonfit configure`
  
 # games tested
 * `wip` means that it doesn't work but work has been done to get it closer to running

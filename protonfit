@@ -60,56 +60,54 @@ run() {
   exit
 }
 
-install() {
-  setupfile="setup.exe"
-  cd "$(dirname "$setupfile")" || exit
-  if [ ! "$FITDBG_SKIP_SETUP" ]; then
-    if [ -d ./pfx ]; then
-      headless &&
-        msg "install canceled because a wine prefix already exists. please delete it" && exit 1
-      msg "there's already a wine prefix here. are you sure you want to wipe it and reinstall? (y/n)"
-      read -r answer
-      case "$answer" in
-        y*|Y*) ;;
-        *) msg "install canceled" && exit 1 ;;
-      esac
-      msg "wiping prefix"
-      rm -rf ./pfx || exit
-      rm version tracked_files
-    fi
+prefix() {
+  environment
+  if [ -d ./pfx ]; then
+    headless && return 1
+    msg "there's already a wine prefix here. are you sure you want to wipe it?"
+    msg "THIS WIPES ALL YOUR GAME FILES. back up your save data. you will also have to reinstall"
+    msg
+    msg "wipe prefix? (y/n)"
+    read -r answer
+    case "$answer" in
+      y*|Y*) ;;
+      *) msg "canceled" && return 1 ;;
+    esac
+    msg "wiping prefix"
+    rm -rf ./pfx
+    rm version tracked_files
+  fi
 
-    environment
-    msg "initializing prefix and checking for wine cmd bugs"
-    echo 'cd "."&&"cmd.exe" /c "echo test0">C:\test0 && echo test1>C:\test1 && echo test2>C:\test2 && echo n | move C:\test1 C:\test2' \
-      > test.bat
-    proton run cmd /c test.bat
-    proton run wineserver -w
-    echo
-    if [ "$(cat pfx/drive_c/test0 | tr -d '\n\r ')" != "test0" ] ||
-       [ "$(cat pfx/drive_c/test2 | tr -d '\n\r ')" != "test1" ]
-    then
-      msg "installing patched cmd.exe so fitgirl setups don't hang"
-      curl --location --progress-bar \
-        https://github.com/Francesco149/wine/releases/download/move-overwrite-fix-r2/cmd.exe.so \
-        > ./pfx/drive_c/windows/syswow64/cmd.exe || exit
-      cp ./pfx/drive_c/windows/syswow64/cmd.exe ./pfx/drive_c/windows/system32
-    else
-      msg "your wine is up to date! great, no need for the cmd patches then"
-    fi
+  msg "initializing prefix and checking for wine cmd bugs"
+  echo 'cd "."&&"cmd.exe" /c "echo test0">C:\test0 && echo test1>C:\test1 && echo test2>C:\test2 && echo n | move C:\test1 C:\test2' \
+    > test.bat
+  proton run cmd /c test.bat
+  proton run wineserver -w
+  echo
+  if [ "$(tr -d '\n\r ' < pfx/drive_c/test0)" != "test0" ] ||
+     [ "$(tr -d '\n\r ' < pfx/drive_c/test2)" != "test1" ]
+  then
+    msg "installing patched cmd.exe so fitgirl setups don't hang"
+    curl --location --progress-bar \
+      https://github.com/Francesco149/wine/releases/download/move-overwrite-fix-r2/cmd.exe.so \
+      > ./pfx/drive_c/windows/syswow64/cmd.exe || exit
+    cp ./pfx/drive_c/windows/syswow64/cmd.exe ./pfx/drive_c/windows/system32
+  else
+    msg "your wine is up to date! great, no need for the cmd patches then"
+  fi
+}
 
-    msg "running ${setupfile}"
-    proton run "$setupfile" || exit
-    proton run wineserver -w
+configure() {
+  base="$(echo "$(pwd)/pfx/drive_c/Games/"*/)"
+  [ ! -d "$base" ] &&
+    msg "looks like the game failed to install, '$base' not found :[" && exit 1
 
-    if [ ! -f ./protonfit ]; then
-      msg "linking protonfit"
-      ln -s "$(which protonfit)" .
-    fi
+  if [ ! -f ./protonfit ]; then
+    msg "linking protonfit"
+    ln -s "$(which protonfit)" .
   fi
 
   msg "generating settings"
-  base="$(echo "$(pwd)/pfx/drive_c/Games/"*/)"
-  [ ! -d "$base" ] && msg "looks like the game failed to install, '$base' not found :[" && exit
   cat > ./protonfit-settings << EOF
 export FIT_BASE="$base"
 export FIT_BINARY="$(cd "$base" || exit
@@ -176,6 +174,16 @@ EOF
   "${EDITOR:-cat}" protonfit-README
 }
 
+install() {
+  if prefix; then
+    setupfile="./setup.exe"
+    msg "running $setupfile"
+    proton run "$setupfile"
+    proton run wineserver -w
+  fi
+  configure
+}
+
 case "$1" in
   run)
     echo "running custom command: $*"
@@ -189,6 +197,15 @@ case "$1" in
     shift
     environment
     proton tricks "$@"
+    exit
+    ;;
+  config*)
+    environment
+    configure
+    exit
+    ;;
+  pre*)
+    prefix
     exit
     ;;
 esac
