@@ -46,8 +46,8 @@ you can install proton-tkg-git from the chaotic aur: https://lonewolf.pedrohlc.c
 proton() {
   (echo "import sys; __file__ = sys.argv[0] = \"$PROTON\""
    sed 's/, "steam"//g; /"waitforexitandrun"/i \
-    elif sys.argv[1] == "tricks": \
-        g_session.run_proc(["winetricks"] + sys.argv[2:]) \
+    elif sys.argv[1] == "exec": \
+        g_session.run_proc(sys.argv[2:]) \
 ' < "$PROTON") | PYTHONPATH="$(dirname "$PROTON")" python3 - "$@"
 }
 
@@ -184,40 +184,40 @@ install() {
   configure
 }
 
-case "$1" in
+arg="$1"
+[ "$arg" ] && shift
+case "$arg" in
   run)
     echo "running custom command: $*"
-    shift
     environment
     proton run "$@"
-    exit
+    ;;
+  exe*)
+    echo "execing $*"
+    environment
+    proton exec "$@"
     ;;
   tricks)
     echo "running winetricks $*"
-    shift
     environment
-    proton tricks "$@"
-    exit
+    proton exec winetricks "$@"
     ;;
   config*)
     environment
     configure
-    exit
     ;;
-  pre*)
-    prefix
-    exit
+  pre*) prefix ;;
+  *)
+    # if protonfit is symlinked inside a game's dir, cd there
+    exedir="$(dirname "$0")"
+    if [ -f "$exedir/protonfit-settings" ]; then
+      cd "$exedir" || exit
+    fi
+
+    if [ ! -f ./protonfit-settings ]; then
+      install
+    else
+      run
+    fi
     ;;
 esac
-
-# if protonfit is symlinked inside a game's dir, cd there
-exedir="$(dirname "$0")"
-if [ -f "$exedir/protonfit-settings" ]; then
-  cd "$exedir" || exit
-fi
-
-if [ ! -f ./protonfit-settings ]; then
-  install
-else
-  run
-fi
