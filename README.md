@@ -46,6 +46,7 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 * `protonfit run` runs an arbitrary binary with the proton prefix
 * to debug wine, you can run `PROTON_LOG=1 WINEDEBUG=+cmd SteamGameId=0 protonfit`
   (change WINEDEBUG value to whatever you like). it will log to ~/.steam-0.log
+* export `FIT_ARGS` to pass arguments to the game binary
 
 # if things go wrong
 * if the game doesn't run, try running with `STEAM_RUNTIME=1` first, as some system libraries might

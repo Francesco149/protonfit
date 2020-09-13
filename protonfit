@@ -56,7 +56,7 @@ run() {
   . ./protonfit-settings
   environment
   cd "$FIT_BASE" || exit
-  proton run "$FIT_BINARY" 2>&1 | tee -a "$logfile"
+  proton run "$FIT_BINARY" $FIT_ARGS 2>&1 | tee -a "$logfile"
   exit
 }
 
