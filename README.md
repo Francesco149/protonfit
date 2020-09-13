@@ -36,6 +36,10 @@ open a terminal, `cd` to the path where `setup.exe` is located and run `protonfi
 NOTE: it's recommended to NOT install directx updates and visual c++ runtime and stuff like that.
       instead, use `tricks` later if needed.
 
+# using it as a runner for proton without steam
+* `protonfit prefix` to create a prefix at ./pfx
+* `run` and `tricks` commands from "advanced usage"
+
 # advanced usage
 * `protonfit tricks` runs winetricks on the proton profile, for example
   `protonfit tricks vcrun2015`
