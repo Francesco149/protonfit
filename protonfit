@@ -116,6 +116,7 @@ export FIT_BINARY="$(cd "$base" || exit
   find . -name '*.exe' |
   dmenu -p "Select game executable (can change this later in protofit-settings):" -l 10 ||
   find . -name '*.exe' | grep -vi uninst | grep -vi setup | sed 1q)"
+export PROTON="$PROTON"
 
 # customize these for your specific game
 export DXVK_LOG_LEVEL="info"
