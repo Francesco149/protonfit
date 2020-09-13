@@ -79,6 +79,8 @@ installs, use borderless
 ### Initial repack
 installs, use borderless
 
+* save data/config location: `pfx/drive_c/users/steamuser/Local Settings/Application Data/ParadiseKiller/Saved/`
+
 ## Puyo Puyo Tetris #928
 ### Update 4
 wip, manually kill the setup.exe process after it's done to make install continue
