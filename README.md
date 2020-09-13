@@ -43,6 +43,8 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 # advanced usage
 * `protonfit tricks` runs winetricks on the proton profile, for example
   `protonfit tricks vcrun2015`
+* if `protonfit tricks` fails for some reason, you can also use `PROTON_WINETRICKS=1` and use the
+  winetricks ui
 * `protonfit run` runs an arbitrary binary with the proton prefix
 * to debug wine, you can run `PROTON_LOG=1 WINEDEBUG=+cmd SteamGameId=0 protonfit`
   (change WINEDEBUG value to whatever you like). it will log to ~/.steam-0.log
