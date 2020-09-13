@@ -132,6 +132,17 @@ installs
 
 * save data/config location `pfx/drive_c/users/steamuser/Local Settings/Application Data/Dontnod/`
 
+## Disgaea 4 Complete+ #1568
+### Initial repack
+wip, needs `protonfit tricks d3dcompiler_47`, must add `MovieSkip=1` to
+`pfx/drive_c/users/steamuser/Application\ Data/Nippon\ Ichi\ Software\,\ Inc/Disgaea\ 4\ Complete+/*/config.ini`
+and also set `WindowMode=1` and change `ResolutionWidth` and `ResolutionHeight` to fullscreen.
+
+it's very picky about fullscreen/resolution. sometimes it will get stuck on the loading screen or
+a black screen with the wrong settings.
+
+audio doesn't seem to work
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
