@@ -148,6 +148,16 @@ a black screen with the wrong settings.
 
 audio doesn't seem to work
 
+## The Outer Worlds
+### Initial repack
+installs, need to install mf with this script https://github.com/z0z0z/mf-install
+
+you need to call the mf-install script in proton mode, like so:
+
+```
+PROTON=/usr/share/steam/compatibilitytools.d/proton_tkg_makepkg WINEPREFIX=/path/to/pfx ./mf-install.sh -proton
+```
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
