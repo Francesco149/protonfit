@@ -141,6 +141,8 @@ and also set `WindowMode=1` and change `ResolutionWidth` and `ResolutionHeight` 
 it's very picky about fullscreen/resolution. sometimes it will get stuck on the loading screen or
 a black screen with the wrong settings.
 
+`WindowMode=2` might also help with startup issues.
+
 audio doesn't seem to work
 
 # credits
