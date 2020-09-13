@@ -120,7 +120,13 @@ wip, needs `protonfit tricks d3dcompiler_47` . clicking Toys or Play crashes.
 ## Horizon: Zero Dawn – Complete Edition #1503
 ### Initial repack
 installs, needs `protonfit tricks vcrun2015` and the very latest proton-tkg-git
-(5.17.r0.gc44db537 or newer), which will be in chaotic aur in a couple hours from this commit
+(5.17.r0.gc44db537 or newer)
+
+## Tell Me Why: Complete Season #1566
+### Initial repack
+installs
+
+* save data/config location `pfx/drive_c/users/steamuser/Local Settings/Application Data/Dontnod/`
 
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
