@@ -80,11 +80,13 @@ install() {
 
     environment
     msg "initializing prefix and checking for wine cmd bugs"
-    proton run cmd /c 'cd "."&&"cmd.exe" /c "echo hello">C:\test0 && echo test1>C:\test1 && echo test2>C:\test2 && echo n | move C:\test1 C:\test2'
+    echo 'cd "."&&"cmd.exe" /c "echo test0">C:\test0 && echo test1>C:\test1 && echo test2>C:\test2 && echo n | move C:\test1 C:\test2' \
+      > test.bat
+    proton run cmd /c test.bat
     proton run wineserver -w
     echo
-    if [ "$(cat pfx/drive_c/test0)" != "test0" ] ||
-       [ "$(cat pfx/drive_c/test2)" != "test1" ]
+    if [ "$(cat pfx/drive_c/test0 | tr -d '\n\r ')" != "test0" ] ||
+       [ "$(cat pfx/drive_c/test2 | tr -d '\n\r ')" != "test1" ]
     then
       msg "installing patched cmd.exe so fitgirl setups don't hang"
       curl --location --progress-bar \
