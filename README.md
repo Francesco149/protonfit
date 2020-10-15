@@ -162,6 +162,31 @@ PROTON=/usr/share/steam/compatibilitytools.d/proton_tkg_makepkg WINEPREFIX=/path
 ### Initial repack
 installs
 
+## Assassin’s Creed: Odyssey #1021
+### Updated Assassin’s Creed: Odyssey – Ultimate Edition v1.5.3 + All DLCs
+broken
+
+something goes wrong when `AFR_x64` is called.  it's using the stdin/stdout patched afr from here
+https://fileforums.com/showthread.php?p=466467 .
+
+razor's DLL seems to be packed/obfuscated. this would be much easier if these compression tools
+were open source...
+
+either way, I initially thought it was failing to read stdin because it couldn't open `CONIN$` when
+called manually, but if I do
+
+```
+while true; do pid=$(pgrep AFR) && sudo strace -p$pid -s9999 -e write; done > afrlog 2>&1
+```
+
+to attach to AFR it seems to be writing binary data to file descriptor 3
+
+logs ends with `+++ exited with 253 +++` . no idea what that means.
+
+for now, you can just use
+`Assassin's Creed: Odyssey Ultimate Edition v1.5.3 + All DLC [EMPRESS] [Linux Wine]` hash
+`F7D2C023BD6B18CB948607E40F5A4A6E2C0C3AEA`
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
