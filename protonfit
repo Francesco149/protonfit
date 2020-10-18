@@ -56,8 +56,8 @@ tricks() {
   [ ! -f "$tricksbin" ] && echo "E: winetricks binary '$tricksbin' not found!" && exit 1
   customtricks="$(mktemp)"
   sed '/w_metadata vcrun2019 dlls/i \
-    [ -d ~/.config/tricks ] && for v in ~/.config/tricks/*; do . \"\$v\"; done && \
-    echo \"loaded custom tricks from ~/.config/tricks\";' < "$tricksbin" > "$customtricks"
+    [ -d ~/.config/tricks ] && for v in ~/.config/tricks/*; do . "$v"; done && \
+    echo "loaded custom tricks from ~/.config/tricks";' < "$tricksbin" > "$customtricks"
   chmod +x "$customtricks"
   protonfit exec "$customtricks" "$@"
   rm -f "$customtricks"
