@@ -63,7 +63,32 @@ tricks() {
   rm -f "$customtricks"
 }
 
+link_data_file() {
+  ln -svfT "$1" "pfx/drive_c/$2"
+}
+
+link_data() {
+  msg "linking data into the prefix"
+  for d in data/*/; do
+    bs="$(basename "$d")"
+    if ! link_data_file "../../$d" "$bs"; then
+      rm -rf "pfx/drive_c/$bs"
+      link_data_file "../../$d" "$bs" || exit
+    fi
+  done
+}
+
+move_data() {
+  mkdir -p data
+  msg "moving data out of the prefix"
+  for d in 'Program Files'  'Program Files (x86)' ProgramData users Games; do
+    mv "pfx/drive_c/$d" ./data/
+  done
+}
+
 run() {
+  [ ! -d ./data ] && move_data
+  link_data
   logfile="$(pwd)/protonfit.log"
   . ./protonfit-settings
   environment
@@ -77,7 +102,8 @@ prefix() {
   if [ -d ./pfx ]; then
     headless && return 1
     msg "there's already a wine prefix here. are you sure you want to wipe it?"
-    msg "THIS WIPES ALL YOUR GAME FILES. back up your save data. you will also have to reinstall"
+    msg "protonfit tries to preserve your stuff by moving it to ./data, but you should always"
+    msg "check that nothing important is left in pfx/ before you wipe it"
     msg
     msg "wipe prefix? (y/n)"
     read -r answer
@@ -172,6 +198,12 @@ hey, your installation is complete, here are a few tips:
 
 * you can run $FIT_BASE/protonfit to run the game
 
+* delete protonfit-settings to recreate the prefix. NOTE: protonfit tries to preserve your data
+  by moving it to data/, but I cannot guarantee that it's not missing something. so check that
+  the data directory contains your save files and whatnot before doing this.
+
+* to force a reinstall, delete data and protonfit-settings
+
 * it will also be available in your applications menu if you have one, however take care to launch
   the one labeled (protonfit). if you want to hide wine-generated shortcuts, remove them from
   ~/.local/share/applications/wine/Programs/Games/
@@ -188,10 +220,14 @@ EOF
 
 install() {
   if prefix; then
-    setupfile="./setup.exe"
-    msg "running $setupfile"
-    proton run "$setupfile"
-    proton run wineserver -w
+    if [ ! -d ./data ]; then
+      setupfile="./setup.exe"
+      msg "running $setupfile"
+      proton run "$setupfile"
+      proton run wineserver -w
+      move_data
+    fi
+    link_data
   fi
   configure
 }
