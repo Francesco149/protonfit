@@ -43,6 +43,10 @@ NOTE: it's recommended to NOT install directx updates and visual c++ runtime and
 # advanced usage
 * `protonfit tricks` runs winetricks on the proton profile, for example
   `protonfit tricks vcrun2015`
+* protonfit modifies winetricks so you can inject your own custom verbs by placing them in
+  `~/.config/tricks` . for example, you can take the [vcrun2019_ge](https://github.com/GloriousEggroll/protonfixes/blob/master/gamefixes/verbs/vcrun2019_ge.verb)
+  verb from GloriousEggroll 's custom protonfixes, place it in `~/.config/tricks` and then you
+  can install it with `protonfit tricks vcrun2019_ge`
 * if `protonfit tricks` fails for some reason, you can also use `PROTON_WINETRICKS=1` and use the
   winetricks ui
 * `protonfit run` runs an arbitrary binary with the proton prefix

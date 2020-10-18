@@ -51,6 +51,18 @@ proton() {
 ' < "$PROTON") | PYTHONPATH="$(dirname "$PROTON")" python3 - "$@"
 }
 
+tricks() {
+  tricksbin="${WINETRICKS:-$(which winetricks)}"
+  [ ! -f "$tricksbin" ] && echo "E: winetricks binary '$tricksbin' not found!" && exit 1
+  customtricks="$(mktemp)"
+  sed '/w_metadata vcrun2019 dlls/i \
+    [ -d ~/.config/tricks ] && for v in ~/.config/tricks/*; do . \"\$v\"; done && \
+    echo \"loaded custom tricks from ~/.config/tricks\";' < "$tricksbin" > "$customtricks"
+  chmod +x "$customtricks"
+  protonfit exec "$customtricks" "$@"
+  rm -f "$customtricks"
+}
+
 run() {
   logfile="$(pwd)/protonfit.log"
   . ./protonfit-settings
@@ -200,7 +212,7 @@ case "$arg" in
   tricks)
     echo "running winetricks $*"
     environment
-    proton exec winetricks "$@"
+    tricks "$@"
     ;;
   config*)
     environment
