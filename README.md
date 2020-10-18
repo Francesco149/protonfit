@@ -126,8 +126,29 @@ wip, needs `protonfit tricks d3dcompiler_47` . clicking Toys or Play crashes.
 
 ## Horizon: Zero Dawn – Complete Edition #1503
 ### Initial repack
-installs, needs `protonfit tricks vcrun2015` and the very latest proton-tkg-git
+installs, needs `protonfit tricks vcrun2015 mfc140` and the very latest proton-tkg-git
 (5.17.r0.gc44db537 or newer)
+
+if it gets killed by out of memory killer, try `echo 1 | sudo tee /proc/sys/vm/overcommit_memory`
+
+if you wish to redo the game optimization process, delete `LocalCacheDX12/PSOCache.bin` in the
+game folder
+
+there are severe memory leaks, on my rx 570 I cannot get the game to work no matter what. people
+with nvidia have had success on the other hand
+
+* game ram usage spikes up and either gets killed by OOM or crashes by failing to alloc
+* the ram spike usage doesn't always happen. sometimes it lasts longer but still crashes during
+  initial cutscene
+* compiling latest https://github.com/HansKristian-Work/vkd3d-proton doesn't seem to help but it
+  seemed to last longer through the cutscene on average
+* same behaviour on xanmod, liquorix, zen, tkg-pds
+* a few other people report exact same behaviour on similar hardware, with no solution
+* tested proton-tkg-git-5.19.r10.g80498dd4-1, the known working proton-ge version,
+  wine-staging 5.18, wine-tkg-git 5.18.r11.g19466905-299, all same thing
+  on all of them
+* tested mesa 20.2.0 and mesa-tkg-git-20.3.0_devel.130091.7d1fb5fffe3, same thing
+* amdvlk always lasts longer, but crashes in a similar fashion at around 10GB ram
 
 ## Tell Me Why: Complete Season #1566
 ### Initial repack
