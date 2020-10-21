@@ -212,6 +212,60 @@ for now, you can just use
 `Assassin's Creed: Odyssey Ultimate Edition v1.5.3 + All DLC [EMPRESS] [Linux Wine]` hash
 `F7D2C023BD6B18CB948607E40F5A4A6E2C0C3AEA`
 
+## Borderlands 3 #1261
+### Updated Borderlands 3: Super Deluxe Edition Build 5382210 + All DLCs
+couldn't get it to work, I get a black screen and directx error after the splascreen. other people
+reported it working with wine 5.16 or 5.19
+
+* installed with: proton-tkg-git 5.19.r12.gbe9c9681-1
+* played with: wine-5.19
+* gpu: rx570
+* driver: amdgpu
+* mesa: mesa 20.2.1
+
+installer is quite slow and memory hungry, I recommend ticking the 3gb ram limit box as it can
+get quite unstable even with a lot of ram
+
+the installer might open annoying cmd windows, just dont touch stuff and let it do its thing
+
+install stock (non-staging) wine and run the game with this script
+
+```
+#!/bin/sh
+export WINEPREFIX="$(pwd)/wine-stock"
+wineserver -k
+cd ./data/Games/Borderlands\ 3/
+exec wine ./OakGame/Binaries/Win64/Borderlands3.exe -NoStartupMovies -notexturestreaming
+```
+
+to fix cutscenes, use https://github.com/z0z0z/mf-install and
+https://github.com/z0z0z/mf-installcab
+
+## MARVEL’S AVENGERS – V1.3.3 (141640) #1617
+### Initial repack
+can get in game but it crashes in a specific spot in the intro area that you can't avoid
+
+* installed with: proton-tkg-git 5.19.r12.gbe9c9681-1
+* played with: proton-ge-custom-stable-bin 5.9_GE_8_ST-1
+* gpu: rx570
+* driver: amdgpu
+* mesa: mesa 20.2.1
+* binary: ./avengers.exe
+
+it's quite memory hungry so make sure you have at least 8GB or memory available at all
+times or tick the low ram option
+
+might take hours to unpack
+
+make sure to at least get the selective english bin and select english in the installer
+
+use this command to run the game (assuming you have proton-ge-custom-stable):
+
+```
+cd ./data/Games/Marvel\'s\ Avengers
+proton 997070 ./avengers.exe
+```
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
