@@ -224,7 +224,7 @@ EOF
 install() {
   if prefix; then
     if [ ! -d ./data ]; then
-      setupfile="./setup.exe"
+      setupfile="$(find -maxdepth 1 -name 'setup*.exe' | sed 1q)"
       msg "running $setupfile"
       proton run "$setupfile"
       proton run wineserver -w
