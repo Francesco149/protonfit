@@ -282,7 +282,7 @@ VERY finnicky to get it to run
 after installing, do:
 
 ```
-echo '-ignorepipelinecache -vulkan -borderless -useMinimumSettings -width 1920 -height 1080' > "data/Games/Red Dead Redemption\ 2/commandline.txt"
+echo '-ignorepipelinecache -vulkan -borderless -useMinimumSettings -width 1920 -height 1080' > "data/Games/Red Dead Redemption 2/commandline.txt"
 ```
 
 to switch proton version after installing with proton tkg, do
