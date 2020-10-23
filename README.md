@@ -310,7 +310,7 @@ REGEDIT4
 "RelayExclude"="ntdll.RtlEnterCriticalSection;ntdll.RtlTryEnterCriticalSection;ntdll.RtlLeaveCriticalSection;kernel32.48;kernel32.49;kernel32.94;kernel32.95;kernel32.96;kernel32.97;kernel32.98;kernel32.TlsGetValue;kernel32.TlsSetValue;kernel32.FlsGetValue;kernel32.FlsSetValue;kernel32.SetLastError;ntdll.NtDelayExecution;KERNEL32.Sleep;ntdll.NtWaitForMultipleObjects;ntdll.RtlRunOnceExecuteOnce;kernelbase.InitOnceExecuteOnce;KERNEL32.WaitForSingleObject;ntdll.NtSetEvent;KERNEL32.SetEvent;KERNEL32.QueryPerformanceCounter;KERNEL32.QueryPerformanceFrequency;winmm.timeGetTime;KERNEL32.GetLastError;ntdll.RtlAllocateHeap;KERNEL32.HeapFree;ntdll.NtReleaseSemaphore;KERNEL32.ReleaseSemaphore;ntdll.RtlNtStatusToDosError;KERNEL32.MulDiv"
 EOF
 
-protonfit regedit relay-workaround.reg
+protonfit run regedit relay-workaround.reg
 ```
 
 now you can run with:
