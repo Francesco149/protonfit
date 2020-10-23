@@ -268,7 +268,7 @@ proton 997070 ./avengers.exe
 
 ## Red Dead Redemption 2 (Build 1311.23, MULTi13)
 ### Initial repack
-crashes unless I enable heavy logging which slows the game down to 10fps
+installs, runs very smoooth with a very finnicky workaround
 
 * installed with: proton-tkg-git 5.19.r17.g8d04884c-1
 * played with: official Proton 5.13 (proton tkg will hang with a black screen)
@@ -294,13 +294,30 @@ PROTON="/path/to/steamapps/common/Proton 5.13/proton" protonfit
 
 and select RDR2.exe again
 
-run with:
+for some reason, the game only works with wine relay logging enabled, otherwise it crashes after
+a couple of seconds.
+
+wine relay logging makes the game unbearably slow, but there's a workaround: we can filter all the
+most called winapi's from being logged and it will run smooth
 
 ```
-pkill -9 -f wine; WINEDEBUG=all,-heap PROTON_LOG=1 SteamGameId=1174180 SteamAppId=1174180 protonfit
+cat > relay-workaround.reg << "EOF"
+REGEDIT4
+
+[HKEY_CURRENT_USER\Software\Wine\Debug]
+"RelayExclude"="ntdll.RtlEnterCriticalSection;ntdll.RtlTryEnterCriticalSection;ntdll.RtlLeaveCriticalSection;kernel32.48;kernel32.49;kernel32.94;kernel32.95;kernel32.96;kernel32.97;kernel32.98;kernel32.TlsGetValue;kernel32.TlsSetValue;kernel32.FlsGetValue;kernel32.FlsSetValue;kernel32.SetLastError;ntdll.NtDelayExecution;KERNEL32.Sleep;ntdll.NtWaitForMultipleObjects;ntdll.RtlRunOnceExecuteOnce;kernelbase.InitOnceExecuteOnce;KERNEL32.WaitForSingleObject;ntdll.NtSetEvent;KERNEL32.SetEvent;KERNEL32.QueryPerformanceCounter;KERNEL32.QueryPerformanceFrequency;winmm.timeGetTime;KERNEL32.GetLastError;ntdll.RtlAllocateHeap;KERNEL32.HeapFree;ntdll.NtReleaseSemaphore;KERNEL32.ReleaseSemaphore;ntdll.RtlNtStatusToDosError;KERNEL32.MulDiv"
+EOF
+
+protonfit regedit relay-workaround.reg
 ```
 
-it will appear to do nothing, but after you do
+now you can run with:
+
+```
+pkill -9 -f wine; WINEDEBUG=-all,relay PROTON_LOG=1 SteamGameId=1174180 SteamAppId=1174180 protonfit
+```
+
+if it appears to do nothing, do this to unfreeze it
 
 ```
 PID=$(pgrep RDR2.exe); kill -s SIGSTOP $PID; kill -s SIGCONT $PID
@@ -309,6 +326,8 @@ PID=$(pgrep RDR2.exe); kill -s SIGSTOP $PID; kill -s SIGCONT $PID
 it will start right up
 
 to skip splashscreens, install this mod: https://www.nexusmods.com/reddeadredemption2/mods/28
+
+I also used the latest crackfix on cs rin but it might not be necessary
 
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
