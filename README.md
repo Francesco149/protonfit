@@ -266,6 +266,50 @@ cd ./data/Games/Marvel\'s\ Avengers
 proton 997070 ./avengers.exe
 ```
 
+## Red Dead Redemption 2 (Build 1311.23, MULTi13)
+### Initial repack
+crashes unless I enable heavy logging which slows the game down to 10fps
+
+* installed with: proton-tkg-git 5.19.r17.g8d04884c-1
+* played with: official Proton 5.13 (proton tkg will hang with a black screen)
+* gpu: rx570
+* driver: amdgpu (radv)
+* mesa: mesa-tkg-git 20.3.0_devel.130274.ddca93ddf70-1
+* binary: ./RDR2.exe
+
+VERY finnicky to get it to run
+
+after installing, do:
+
+```
+echo '-ignorepipelinecache -vulkan -borderless -useMinimumSettings -width 1920 -height 1080' > "data/Games/Red Dead Redemption\ 2/commandline.txt"
+```
+
+to switch proton version after installing with proton tkg, do
+
+```
+rm protonfit-settings
+PROTON="/path/to/steamapps/common/Proton 5.13/proton" protonfit
+```
+
+and select RDR2.exe again
+
+run with:
+
+```
+pkill -9 -f wine; WINEDEBUG=all,-heap PROTON_LOG=1 SteamGameId=1174180 SteamAppId=1174180 protonfit
+```
+
+it will appear to do nothing, but after you do
+
+```
+PID=$(pgrep RDR2.exe); kill -s SIGSTOP $PID; kill -s SIGCONT $PID
+```
+
+it will start right up
+
+to skip splashscreens, install this mod: https://www.nexusmods.com/reddeadredemption2/mods/28
+
 # credits
 https://github.com/7oxicshadow/proton-standalone-script/blob/master/proton_launch.sh
 which I used as reference
