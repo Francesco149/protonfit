@@ -214,31 +214,20 @@ for now, you can just use
 
 ## Borderlands 3 #1261
 ### Updated Borderlands 3: Super Deluxe Edition Build 5382210 + All DLCs
-couldn't get it to work, I get a black screen and directx error after the splascreen. other people
-reported it working with wine 5.16 or 5.19
+installs
 
 * installed with: proton-tkg-git 5.19.r12.gbe9c9681-1
-* played with: wine-5.19
+* played with: official proton 5.13
 * gpu: rx570
 * driver: amdgpu
-* mesa: mesa 20.2.1
+* mesa: mesa-tkg-git 20.3.0_devel.130274.ddca93ddf70-1
 
 installer is quite slow and memory hungry, I recommend ticking the 3gb ram limit box as it can
 get quite unstable even with a lot of ram
 
 the installer might open annoying cmd windows, just dont touch stuff and let it do its thing
 
-install stock (non-staging) wine and run the game with this script
-
-```
-#!/bin/sh
-export WINEPREFIX="$(pwd)/wine-stock"
-wineserver -k
-cd ./data/Games/Borderlands\ 3/
-exec wine ./OakGame/Binaries/Win64/Borderlands3.exe -NoStartupMovies -notexturestreaming
-```
-
-to fix cutscenes, use https://github.com/z0z0z/mf-install and
+if movies are broken, use https://github.com/z0z0z/mf-install and
 https://github.com/z0z0z/mf-installcab
 
 ## MARVEL’S AVENGERS – V1.3.3 (141640) #1617
