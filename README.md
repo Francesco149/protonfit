@@ -1,3 +1,40 @@
+# Deprecated!
+hey, I'm glad so many people found this script useful, but it has been outdated for a while and there are better ways to run fitgirl installers
+these days.
+
+## launching fitgirl installers with lutris
+lutris is probably the best option and it's also pre-installed in bazzite
+
+* click the + in the top left
+* install windows game from a game executable
+* type name matching the lutris website name for the game if available
+* click through the steps and select setup.exe for the repack
+* change install dir if it tries to install to Z:\Games (it did for me for some reason)
+* once setup completes, right click on the game -> configure and select the executable
+* should be able to launch the game now
+* install winetricks stuff as needed. you can also reference the non-pirated install scripts from the lutris website to see what tweaks are needed for the game
+
+## alteratively, using umu as a steam-less proton launcher works for fitgirl installers
+you can easily launch current proton without steam using [umu](https://github.com/Open-Wine-Components/umu-launcher). it comes preinstalled with bazzite. it even allows you to specify store and game id to apply game specific fixes. that just seems like the ideal tool to launch repacks. I think protonfit would at most be a helper/wrapper around umu that just manages the wine prefixes, if anyone even cares about that functionality
+
+so for now, just use umu - for example:
+
+```sh
+export WINEPREFIX=./pfx
+umu-run winetricks vcrun2022
+umu-run ./setup.exe
+umu-run ./pfx/drive_c/path/to/your/game.exe
+```
+
+## why is fitgirl deprecated
+as wine has since fixed the issues that I was patching for fitgirl installers and other launchers have improved, there is really
+no benefit in running this over something like lutris and it doesn't even work with the latest versions of proton .
+
+I guess having some heuristics to automatically detect the game exe and move files out of the prefix would be nice, but both umu
+and lutris will work perfectly with repacks. so not sure if I will revive this script. but if I do, it'll just be some kind of QoL
+on top of umu or lutris to try and generate some quick defaults
+
+# Old Readme
 this script automatically patches wine so fitgirl installers don't hang and generates a startup
 script that runs the game with proton as well as a .desktop file for application launchers
 
