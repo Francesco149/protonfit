@@ -14,10 +14,10 @@ lutris is probably the best option and it's also pre-installed in bazzite
 * should be able to launch the game now
 * install winetricks stuff as needed. you can also reference the non-pirated install scripts from the lutris website to see what tweaks are needed for the game
 
-## alteratively, using umu as a steam-less proton launcher works for fitgirl installers
-you can easily launch current proton without steam using [umu](https://github.com/Open-Wine-Components/umu-launcher). it comes preinstalled with bazzite. it even allows you to specify store and game id to apply game specific fixes. that just seems like the ideal tool to launch repacks. I think protonfit would at most be a helper/wrapper around umu that just manages the wine prefixes, if anyone even cares about that functionality
+## alternatively, using umu as a steam-less proton launcher works for fitgirl installers
+you can easily launch current proton without steam using [umu](https://github.com/Open-Wine-Components/umu-launcher). it comes preinstalled with bazzite. it even allows you to specify store and game id to apply game specific fixes.
 
-so for now, just use umu - for example:
+example:
 
 ```sh
 export WINEPREFIX=./pfx
